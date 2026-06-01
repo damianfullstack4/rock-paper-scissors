@@ -1,7 +1,7 @@
 console.log(getComputerChoice());
 
 console.log(getHumanChoice());
-
+const computerScore = 0, humanScore = 0;
 function getComputerChoice(){
     let choice = Math.random();
 
