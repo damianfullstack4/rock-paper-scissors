@@ -1,6 +1,7 @@
 // Basic Javascript Rock Paper Scissors Browser Game //
 let computerScore = 0, humanScore = 0;
 playGame();
+alert("Finals Scores:\nPlayer Score: " + humanScore + "  Computer Score: " + computerScore);
 console.log("Finals Scores:\nPlayer Score: " + humanScore + "  Computer Score: " + computerScore);
 
 function playGame(){
@@ -18,21 +19,21 @@ function playGame(){
         humanChoice = humanChoice.toLowerCase();
 
         if(humanChoice != "rock" && humanChoice != "paper" && humanChoice != "scissors"){
-            console.log("Invalid choice, aborting round...")
+            alert("Invalid choice, aborting round...")
             return;
         }
 
         if (humanChoice === computerChoice){
-            console.log("Tie! " + humanChoice + " ties with " + computerChoice + ".")
+            alert("Tie! " + humanChoice + " ties with " + computerChoice + ".")
             return;
 
         }else if((humanChoice == "rock" && computerChoice == "scissors")||(humanChoice == "paper" && computerChoice == "rock")||(humanChoice == "scissors" && computerChoice == "paper")){
-            console.log("Player wins! " + humanChoice + " beats " + computerChoice + ".")
+            alert("Player wins! " + humanChoice + " beats " + computerChoice + ".")
             humanScore++;
             return;
 
         }else{
-            console.log("Computer wins! " + computerChoice + " beats " + humanChoice + ".")
+            alert("Computer wins! " + computerChoice + " beats " + humanChoice + ".")
             computerScore++;
             return;
         }
