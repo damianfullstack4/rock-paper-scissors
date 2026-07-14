@@ -1,3 +1,9 @@
+const choiceContainer = document.querySelector(`.container.choice`);
+
+choiceContainer.addEventListener(`click`, function(e){
+    e.target.style.backgroundColor = `red`;
+});
+
 // Basic Javascript Rock Paper Scissors Browser Game //
 let computerScore = 0, humanScore = 0;
 playGame();
@@ -62,4 +68,3 @@ function playGame(){
         return prompt("Enter rock, paper or scissors\nPlayer Score: " + humanScore + "  Computer Score: " + computerScore);
     }
 }
-
