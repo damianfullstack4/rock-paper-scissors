@@ -14,3 +14,7 @@ body {
     justify-content: space-around;
 }
 
+
+.log p {
+    text-align: center;
+}

@@ -3,6 +3,7 @@ const human = document.querySelector(`.humanScore`);
 const computer = document.querySelector(`.computerScore`);
 const round = document.querySelector(`.round`);
 const endDisplay = document.querySelector(`.message`);
+const logDisplay = document.querySelector(`.container.log`);
 
 let computerScore = 0, humanScore = 0;
 let roundNum = 1;
@@ -33,49 +34,33 @@ function getComputerChoice(){
 }
 
 function playRound(humanChoice, computerChoice){
+    let logText = ``;
+    let log = document.createElement(`p`);
     humanChoice = humanChoice.toLowerCase();
-    alert(`The computer chose ` + computerChoice);
     if (humanChoice === computerChoice){
-        alert(`Tie! You both chose ` + humanChoice + `.`);
-        return;
-
+        logText = `Tie! You both chose ` + humanChoice + `.`;
     }else if((humanChoice == `rock` && computerChoice == `scissors`)||(humanChoice == `paper` && computerChoice == `rock`)||(humanChoice == `scissors` && computerChoice == `paper`)){
-        alert(`Player wins! ` + humanChoice + ` beats ` + computerChoice + `.`);
+        logText = `Player wins! ` + humanChoice + ` beats ` + computerChoice + `.`;
         humanScore++;
         human.textContent = humanScore;
-        return;
-
     }else{
-        alert(`Computer wins! ` + computerChoice + ` beats ` + humanChoice + `.`);
+        logText = `Computer wins! ` + computerChoice + ` beats ` + humanChoice + `.`;
         computerScore++;
         computer.textContent = computerScore;
-        return;
     }
-    
+    log.textContent = logText;
+    logDisplay.appendChild(log);
 }
 
 function endGame(){
-    let text = ``;
+    let resultText = ``;
     choiceContainer.remove();
     if(humanScore > computerScore){
-        text = `Player wins!`;
+        resultText = `Player wins!`;
     }else if(humanScore === computerScore){
-        text = `Tie!`;
+        resultText = `Tie!`;
     }else{
-        text = `Computer wins!`;
+        resultText = `Computer wins!`;
     }
-    endDisplay.textContent = text;
+    endDisplay.textContent = resultText;
 }
-/*
-function playGame(){
-    alert("Finals Scores:\nPlayer Score: " + humanScore + "  Computer Score: " + computerScore);
-    console.log("Finals Scores:\nPlayer Score: " + humanScore + "  Computer Score: " + computerScore);
-    if(humanScore > computerScore){
-        console.log("Player wins!");
-    }else if(humanScore === computerScore){
-        console.log("Tie!");
-    }else{
-        console.log("Computer wins!");
-    }
-}
-*/
