@@ -2,6 +2,7 @@ const choiceContainer = document.querySelector(`.container.choice`);
 const human = document.querySelector(`.humanScore`);
 const computer = document.querySelector(`.computerScore`);
 const round = document.querySelector(`.round`);
+const endDisplay = document.querySelector(`.message`);
 
 let computerScore = 0, humanScore = 0;
 let roundNum = 1;
@@ -10,6 +11,10 @@ choiceContainer.addEventListener(`click`, function(e){
     if(e.target.tagName === `BUTTON`){
         playRound(e.target.textContent, getComputerChoice())
         roundNum++;
+        if(roundNum > 5){
+            endGame();
+            return;
+        }
         // end game here before round update //
         round.textContent = roundNum;
     }
@@ -30,15 +35,8 @@ function getComputerChoice(){
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase();
     alert(`The computer chose ` + computerChoice);
-
-    if(humanChoice != `rock` && humanChoice != `paper` && humanChoice != `scissors`){
-        alert(`Invalid choice, aborting round...`);
-        return;
-    }
-
     if (humanChoice === computerChoice){
         alert(`Tie! You both chose ` + humanChoice + `.`);
-        roundNum--;
         return;
 
     }else if((humanChoice == `rock` && computerChoice == `scissors`)||(humanChoice == `paper` && computerChoice == `rock`)||(humanChoice == `scissors` && computerChoice == `paper`)){
@@ -54,6 +52,19 @@ function playRound(humanChoice, computerChoice){
         return;
     }
     
+}
+
+function endGame(){
+    let text = ``;
+    choiceContainer.remove();
+    if(humanScore > computerScore){
+        text = `Player wins!`;
+    }else if(humanScore === computerScore){
+        text = `Tie!`;
+    }else{
+        text = `Computer wins!`;
+    }
+    endDisplay.textContent = text;
 }
 /*
 function playGame(){
