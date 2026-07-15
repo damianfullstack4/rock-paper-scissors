@@ -12,7 +12,7 @@ choiceContainer.addEventListener(`click`, function(e){
     if(e.target.tagName === `BUTTON`){
         playRound(e.target.textContent, getComputerChoice())
         roundNum++;
-        if(roundNum > 5){
+        if(computerScore === 5 || humanScore === 5){
             endGame();
             return;
         }
@@ -37,9 +37,16 @@ function playRound(humanChoice, computerChoice){
     let logText = ``;
     let log = document.createElement(`p`);
     humanChoice = humanChoice.toLowerCase();
+
     if (humanChoice === computerChoice){
         logText = `Tie! You both chose ` + humanChoice + `.`;
-    }else if((humanChoice == `rock` && computerChoice == `scissors`)||(humanChoice == `paper` && computerChoice == `rock`)||(humanChoice == `scissors` && computerChoice == `paper`)){
+
+    }else if (
+        (humanChoice == `rock` && computerChoice == `scissors`)||
+        (humanChoice == `paper` && computerChoice == `rock`)||
+        (humanChoice == `scissors` && computerChoice == `paper`)
+    ) {
+
         logText = `Player wins! ` + humanChoice + ` beats ` + computerChoice + `.`;
         humanScore++;
         human.textContent = humanScore;
@@ -50,6 +57,7 @@ function playRound(humanChoice, computerChoice){
     }
     log.textContent = logText;
     logDisplay.appendChild(log);
+    logDisplay.scrollTop = logDisplay.scrollHeight;
 }
 
 function endGame(){
