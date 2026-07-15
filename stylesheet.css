@@ -17,8 +17,9 @@ body {
 .log {
     max-height: 150px;
     overflow-y: auto;
+    padding-right: 10px;
 }
 
 .log p {
-    text-align: center;
+    text-align: left;
 }

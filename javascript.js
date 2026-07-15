@@ -55,7 +55,7 @@ function playRound(humanChoice, computerChoice){
         computerScore++;
         computer.textContent = computerScore;
     }
-    log.textContent = logText;
+    log.textContent = `Round ` + roundNum + `: ` + logText;
     logDisplay.appendChild(log);
     logDisplay.scrollTop = logDisplay.scrollHeight;
 }
