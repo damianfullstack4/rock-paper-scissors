@@ -11,30 +11,38 @@ body {
     background: #F5F5F5;
 }
 
-.header {
+.container.header {
     padding: 10px 0px 5px 0px;
-    align-self: flex-start;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     background: #3b8296
 }
-.header * {
+
+.container.header * , .index *, .log *{
     color: #1F2937;
 }
 
-.container.results {
+.container.card {
     display: flex;
-    justify-content: center;
-    width: 30%;
-    gap: 10%;
+    justify-content: space-between;
     background-color: #FFFFFF;
     border: 1px solid #D1D5DB;
+    padding: 2px 5px;
+    width: 325px;
+
+}
+.container.card, .container.log {
+    background-color: #FFFFFF;
 }
 
-.results span {
+.container.card span {
     flex-shrink: 0;
+}
+
+.container.card * {
+    font-weight: bold;
 }
 
 .humanName {
@@ -48,16 +56,18 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    gap: 10%
+    gap: 30px;
 }
 
-
-.log {
-    max-height: 150px;
+.container.log {
+    max-height: 143px;
+    height: 143px;
     overflow-y: auto;
     padding-right: 10px;
+    width: 27%;
 }
 
-.log p {
+.container.log p {
     text-align: left;
+    margin: 5px 5px;
 }
