@@ -1,9 +1,9 @@
-const choiceContainer = document.querySelector(`.container.choice`);
+const choiceContainer = document.querySelector(`.choice`);
 const human = document.querySelector(`.humanScore`);
 const computer = document.querySelector(`.computerScore`);
 const round = document.querySelector(`.round`);
 const endDisplay = document.querySelector(`.message`);
-const logDisplay = document.querySelector(`.container.log`);
+const logDisplay = document.querySelector(`.log`);
 
 let computerScore = 0, humanScore = 0;
 let roundNum = 1;
