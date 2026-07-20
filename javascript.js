@@ -42,9 +42,9 @@ function playRound(humanChoice, computerChoice){
         logText = `Tie! You both chose ` + humanChoice + `.`;
 
     }else if (
-        (humanChoice == `rock` && computerChoice == `scissors`)||
-        (humanChoice == `paper` && computerChoice == `rock`)||
-        (humanChoice == `scissors` && computerChoice == `paper`)
+        (humanChoice === `rock` && computerChoice === `scissors`)||
+        (humanChoice === `paper` && computerChoice === `rock`)||
+        (humanChoice === `scissors` && computerChoice === `paper`)
     ) {
 
         logText = `Player wins! ` + humanChoice + ` beats ` + computerChoice + `.`;
