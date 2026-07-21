@@ -5,18 +5,19 @@ const round = document.querySelector(`.round`);
 const endDisplay = document.querySelector(`.message`);
 const logDisplay = document.querySelector(`.log`);
 
+const WIN_SCORE = 5;
+
 let computerScore = 0, humanScore = 0;
 let roundNum = 1;
 
 choiceContainer.addEventListener(`click`, function(e){
     if(e.target.tagName === `IMG`){
         playRound(e.target.id, getComputerChoice())
-        roundNum++;
-        if(computerScore === 5 || humanScore === 5){
+        if(computerScore === WIN_SCORE || humanScore === WIN_SCORE){
             endGame();
             return;
         }
-        // end game here before round update //
+        roundNum++;
         round.textContent = roundNum;
     }
 });
@@ -35,7 +36,7 @@ function getComputerChoice(){
 
 function playRound(humanChoice, computerChoice){
     let logText = ``;
-    let log = document.createElement(`p`);
+    const log = document.createElement(`p`);
     humanChoice = humanChoice.toLowerCase();
 
     if (humanChoice === computerChoice){
@@ -47,15 +48,15 @@ function playRound(humanChoice, computerChoice){
         (humanChoice === `scissors` && computerChoice === `paper`)
     ) {
 
-        logText = `Player wins! ` + humanChoice + ` beats ` + computerChoice + `.`;
+        logText = `Human Wins! ${humanChoice} beats ${computerChoice}.`;
         humanScore++;
         human.textContent = humanScore;
     }else{
-        logText = `Computer wins! ` + computerChoice + ` beats ` + humanChoice + `.`;
+        logText = `Computer Wins! ${computerChoice} beats ${humanChoice}.`;
         computerScore++;
         computer.textContent = computerScore;
     }
-    log.textContent = `Round ` + roundNum + `: ` + logText;
+    log.textContent = `Round ${roundNum}: ${logText}`;
     logDisplay.appendChild(log);
     logDisplay.scrollTop = logDisplay.scrollHeight;
 }
@@ -63,7 +64,7 @@ function playRound(humanChoice, computerChoice){
 function endGame(){
     let resultText = ``;
 
-    let replay = document.createElement(`button`);
+    const replay = document.createElement(`button`);
     replay.textContent = `Replay`;
     replay.className = `replay`;
 
