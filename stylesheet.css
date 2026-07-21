@@ -97,7 +97,7 @@ body {
 }
 
 .choice button:hover img{
-    outline: 1px solid grey;
+    outline: 2px solid black;
 }
 
 .hidden {
