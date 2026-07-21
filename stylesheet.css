@@ -4,6 +4,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.choice button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -26,11 +33,12 @@ body {
     background: #3b8296;
 }
 
-.header * , .index *, .log *{
-    color: #1F2937;
-}
 .header *{
     color: white;
+}
+
+.index *, .log *{
+    color: #1F2937;
 }
 
 .card {
@@ -88,7 +96,7 @@ body {
     width: auto;
 }
 
-img:hover {
+.choice button:hover img{
     outline: 1px solid grey;
 }
 

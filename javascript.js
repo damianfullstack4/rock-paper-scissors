@@ -11,17 +11,19 @@ let computerScore = 0, humanScore = 0;
 let roundNum = 1;
 
 choiceContainer.addEventListener(`click`, function(e){
-    if(e.target.tagName === `IMG`){
-        playRound(e.target.id, getComputerChoice())
-        if(computerScore === WIN_SCORE || humanScore === WIN_SCORE){
-            endGame();
-            return;
-        }
-        roundNum++;
-        round.textContent = roundNum;
+    const currentButton = e.target.closest(`button`);
+    if(!currentButton){ return; }
+
+    playRound(currentButton.id, getComputerChoice())
+    if(computerScore === WIN_SCORE || humanScore === WIN_SCORE){
+        endGame();
+        return;
     }
+    roundNum++;
+    round.textContent = roundNum;
 });
 
+// Clean up with array for readability //
 function getComputerChoice(){
     let choice = Math.random();
 
@@ -34,13 +36,14 @@ function getComputerChoice(){
     }
 }
 
+// Use a get winner function //
 function playRound(humanChoice, computerChoice){
     let logText = ``;
     const log = document.createElement(`p`);
     humanChoice = humanChoice.toLowerCase();
 
     if (humanChoice === computerChoice){
-        logText = `Tie! You both chose ` + humanChoice + `.`;
+        logText = `Tie! You both chose ${humanChoice}.`;
 
     }else if (
         (humanChoice === `rock` && computerChoice === `scissors`)||
@@ -51,6 +54,7 @@ function playRound(humanChoice, computerChoice){
         logText = `Human Wins! ${humanChoice} beats ${computerChoice}.`;
         humanScore++;
         human.textContent = humanScore;
+
     }else{
         logText = `Computer Wins! ${computerChoice} beats ${humanChoice}.`;
         computerScore++;
@@ -82,6 +86,7 @@ function endGame(){
 
 }
 
+// 
 function resetGame(e){
     humanScore = 0;
     human.textContent = humanScore;
