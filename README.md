@@ -5,6 +5,7 @@ A browser based rock paper scissors game made as a project for The Odin Project.
 The player chooses between three button choices while the computer chooses randomly.
 The game features a log that auto scrolls to the newest log addition.
 When the game is finished, the buttons are removed and a winner is displayed.
+Aftwards a reset button appears to make the game replayable.
 
 Live Demo: https://damianfullstack4.github.io/rock-paper-scissors/
 
@@ -23,10 +24,10 @@ Live Demo: https://damianfullstack4.github.io/rock-paper-scissors/
 - DOM Manipulation
 - Event Listeners
 - Basic scrollable log
+- Replayable
 
 ## Future Improvements
 - Better visual styling
-- Reset/refresh button
 - Persistent score/leaderboard
 
 ## Running the Project
