@@ -82,7 +82,16 @@ body {
     margin: 3px 0px;
     white-space: nowrap;
 }
-button:hover {
-    background-color: black;
-    color: white;
+
+.choice img {
+    height: 100px;
+    width: auto;
+}
+
+img:hover {
+    outline: 1px solid grey;
+}
+
+.hidden {
+    display: none;
 }

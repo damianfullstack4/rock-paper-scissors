@@ -9,8 +9,8 @@ let computerScore = 0, humanScore = 0;
 let roundNum = 1;
 
 choiceContainer.addEventListener(`click`, function(e){
-    if(e.target.tagName === `BUTTON`){
-        playRound(e.target.textContent, getComputerChoice())
+    if(e.target.tagName === `IMG`){
+        playRound(e.target.id, getComputerChoice())
         roundNum++;
         if(computerScore === 5 || humanScore === 5){
             endGame();
@@ -62,13 +62,36 @@ function playRound(humanChoice, computerChoice){
 
 function endGame(){
     let resultText = ``;
-    choiceContainer.remove();
+
+    let replay = document.createElement(`button`);
+    replay.textContent = `Replay`;
+    replay.className = `replay`;
+
+    choiceContainer.classList.add(`hidden`);
     if(humanScore > computerScore){
-        resultText = `Player wins!`;
+        resultText = `Human wins!`;
     }else if(humanScore === computerScore){
         resultText = `Tie!`;
     }else{
         resultText = `Computer wins!`;
     }
     endDisplay.textContent = resultText;
+    document.body.append(replay);
+    replay.addEventListener(`click`, resetGame);
+
+}
+
+function resetGame(e){
+    humanScore = 0;
+    human.textContent = humanScore;
+    computerScore = 0;
+    computer.textContent = computerScore;
+    roundNum = 1;
+    round.textContent = roundNum;
+
+    logDisplay.replaceChildren();
+    endDisplay.textContent = ``;
+    choiceContainer.classList.remove(`hidden`);
+    e.target.remove();
+
 }
