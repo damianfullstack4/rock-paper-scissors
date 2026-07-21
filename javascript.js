@@ -5,6 +5,8 @@ const round = document.querySelector(`.round`);
 const endDisplay = document.querySelector(`.message`);
 const logDisplay = document.querySelector(`.log`);
 
+const choices = [`rock`, `paper`, `scissors`];
+
 const WIN_SCORE = 5;
 
 let computerScore = 0, humanScore = 0;
@@ -23,17 +25,8 @@ choiceContainer.addEventListener(`click`, function(e){
     round.textContent = roundNum;
 });
 
-// Clean up with array for readability //
 function getComputerChoice(){
-    let choice = Math.random();
-
-    if(choice < (1/3)){
-        return `rock`;
-    } else if(choice > (2/3)){
-        return `paper`;
-    }else{
-        return `scissors`;
-    }
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
 // Use a get winner function //
