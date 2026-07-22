@@ -4,6 +4,7 @@ const computer = document.querySelector(`.computerScore`);
 const round = document.querySelector(`.round`);
 const endDisplay = document.querySelector(`.message`);
 const logDisplay = document.querySelector(`.log`);
+const replayBtn = document.querySelector(`.restart button`);
 
 const choices = [`rock`, `paper`, `scissors`];
 
@@ -24,6 +25,8 @@ choiceContainer.addEventListener(`click`, function(e){
     roundNum++;
     round.textContent = roundNum;
 });
+
+replayBtn.addEventListener(`click`, resetGame);
 
 function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)];
@@ -59,28 +62,19 @@ function playRound(humanChoice, computerChoice){
 }
 
 function endGame(){
-    let resultText = ``;
-
-    const replay = document.createElement(`button`);
-    replay.textContent = `Replay`;
-    replay.className = `replay`;
-
     choiceContainer.classList.add(`hidden`);
+    replayBtn.classList.remove(`hidden`);
     if(humanScore > computerScore){
-        resultText = `Human wins!`;
+        endDisplay.textContent = `Human wins!`;
     }else if(humanScore === computerScore){
-        resultText = `Tie!`;
+        endDisplay.textContent = `Tie!`;
     }else{
-        resultText = `Computer wins!`;
+        endDisplay.textContent = `Computer wins!`;
     }
-    endDisplay.textContent = resultText;
-    document.body.append(replay);
-    replay.addEventListener(`click`, resetGame);
-
 }
 
 // 
-function resetGame(e){
+function resetGame(){
     humanScore = 0;
     human.textContent = humanScore;
     computerScore = 0;
@@ -91,6 +85,5 @@ function resetGame(e){
     logDisplay.replaceChildren();
     endDisplay.textContent = ``;
     choiceContainer.classList.remove(`hidden`);
-    e.target.remove();
-
+    replayBtn.classList.add(`hidden`);
 }
